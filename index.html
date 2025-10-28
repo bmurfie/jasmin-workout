@@ -1733,7 +1733,8 @@
       const exEntry = document.getElementById(`ex-entry-${index}`);
       attachSwipeListeners(exEntry);
       if (scrolled) {
-        displayContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Removed auto-scrolling to prevent page jump when switching exercises
+        // displayContainer.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
 
@@ -2332,3 +2333,4 @@
   </footer>
 </body>
 </html>
+
