@@ -1878,34 +1878,32 @@
       }
       sessionEntry.sets = sets;
     }
-    function autoAdvanceFocus(exIndex, setNum) {
-      const activeElement = document.activeElement;
-  const currentInputIsWeight = activeElement && activeElement.id.endsWith("_weight");
+   function autoAdvanceFocus(exIndex, setNum) {
+    const activeElement = document.activeElement;
+    const currentInputIsWeight = activeElement && activeElement.id.endsWith("_weight");
 
-  // If you just typed weight, go to reps for the same set
-  if (currentInputIsWeight) {
-    const nextRepsInput = document.getElementById(`ex${exIndex}_set${setNum}_reps`);
-    if (nextRepsInput) {
-      nextRepsInput.focus();
-      return;
+    // Move from weight → reps for the same set
+    if (currentInputIsWeight) {
+        const nextRepsInput = document.getElementById("ex" + exIndex + "_set" + setNum + "_reps");
+        if (nextRepsInput) {
+            nextRepsInput.focus();
+            return;
+        }
     }
-  }
 
-  // Otherwise, move to the next set's weight (within the SAME exercise only)
-  const exercisePlan = activeWorkoutPlan.exercises[exIndex];
-  const numSets = parseInt(exercisePlan.sets) || 1;
-  const nextSetNum = setNum + 1;
+    // Move to the next set's weight input (same exercise only)
+    const exercisePlan = activeWorkoutPlan.exercises[exIndex];
+    const numSets = parseInt(exercisePlan.sets) || 1;
+    const nextSetNum = setNum + 1;
 
-  if (nextSetNum <= numSets) {
-    const nextWeightInput = document.getElementById(`ex${exIndex}_set${nextSetNum}_weight`);
-    if (nextWeightInput) {
-      nextWeightInput.focus();
-      return;
+    if (nextSetNum <= numSets) {
+        const nextWeightInput = document.getElementById("ex" + exIndex + "_set" + nextSetNum + "_weight");
+        if (nextWeightInput) {
+            nextWeightInput.focus();
+            return;
+        }
     }
-  }
-
-  // Do nothing once the last set of this exercise is filled.
-  // (No auto-jump to the next exercise; user must press Next.)
+    // Stop auto navigation here — user must manually press "Next"
 }
       }
       const exercisePlan = activeWorkoutPlan.exercises[exIndex];
@@ -2400,6 +2398,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
