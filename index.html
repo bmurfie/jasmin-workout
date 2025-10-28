@@ -1881,7 +1881,8 @@
     function autoAdvanceFocus(exIndex, setNum) {
       const activeElement = document.activeElement;
       const currentInputIsWeight = activeElement.id.endsWith("_weight");
-
+      
+      // If you just typed weight, go to reps for the same set
       if (currentInputIsWeight) {
         const nextRepsInput = document.getElementById(`ex${exIndex}_set${setNum}_reps`);
         if (nextRepsInput) {
@@ -1889,6 +1890,23 @@
           return;
         }
       }
+      
+      // Otherwise, move to the next set's weight (within the SAME exercise only)
+      const exercisePlan = activeWorkoutPlan.exercises[exIndex];
+      const numSets = parseInt(exercisePlan.sets) || 1;
+      const nextSetNum = setNum + 1;
+
+      if (nextSetNum <= numSets) {
+        const nextWeightInput = document.getElementById(`ex${exIndex}_set${nextSetNum}_weight`);
+        if (nextWeightInput) {
+          nextWeightInput.focus();
+          return;
+        }
+      }
+
+      // Do nothing once the last set of this exercise is filled.
+      // (No auto-jump to the next exercise; user must press Next.)
+    }
       const exercisePlan = activeWorkoutPlan.exercises[exIndex];
       const numSets = parseInt(exercisePlan.sets) || 1;
       const nextSetNum = setNum + 1;
@@ -2381,4 +2399,5 @@
   </footer>
 </body>
 </html>
+
 
