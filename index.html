@@ -9,38 +9,50 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Chewy&display=swap');
         
-        /* Color Palette (Jasmin's Aesthetic) */
+        /* Color Palette (Jasmin's Aesthetic - Enhanced) */
         :root {
             --color-deep-pink: #E91E63;
+            --color-hot-pink: #FF1493;
             --color-medium-pink: #F06292;
-            --color-light-pink: #FFC0CB;
-            --color-bg-start: #fce4ec;
-            --color-bg-end: #ffe0f0;
-            --color-text-dark: #4a4a4a;
+            --color-light-pink: #FFB6D9;
+            --color-baby-pink: #FFE4F0;
+            --color-bg-start: #FFF0F7;
+            --color-bg-end: #FFE0ED;
+            --color-text-dark: #2D1B2E;
+            --color-text-medium: #6B4C6D;
 
             /* Tracker Adaptation Colors */
-            --color-tracker-bg: #fff;
-            --color-tracker-panel: #fff7f7;
-            --color-tracker-border: #f8bbd0; 
-            --color-tracker-muted: #777;
+            --color-tracker-bg: #FFFFFF;
+            --color-tracker-panel: #FFF5FA;
+            --color-tracker-border: #FFB6D9; 
+            --color-tracker-muted: #9E7BA0;
+            --color-input-bg: #FFFFFF;
+            --color-input-border: #FFD1E8;
 
             /* Intensity Colors */
-            --color-compound: var(--color-deep-pink); 
-            --color-isolation: #00BCD4;
-            --color-progress: #4CAF50;
-            --color-danger: #FF6B6B;
-            --color-history-count: var(--color-deep-pink); 
+            --color-compound: #FF1493; 
+            --color-isolation: #A855F7;
+            --color-progress: #10B981;
+            --color-danger: #EF4444;
+            --color-history-count: var(--color-hot-pink); 
             
             /* General Styling */
-            --radius-soft: 15px;
+            --radius-soft: 20px;
+            --radius-card: 24px;
+            --shadow-sm: 0 2px 8px rgba(255, 20, 147, 0.08);
+            --shadow-md: 0 4px 20px rgba(255, 20, 147, 0.12);
+            --shadow-lg: 0 8px 32px rgba(255, 20, 147, 0.18);
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+            background-attachment: fixed;
             color: var(--color-text-dark);
-            padding-top: 70px;
+            padding-top: 75px;
             scroll-behavior: smooth;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
         }
         
         /* Enforce Chewy font on all main headings */
@@ -49,13 +61,15 @@
         }
 
         .main-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background-color: var(--color-tracker-bg);
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
-            padding: 35px;
-            margin-bottom: 40px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 245, 250, 0.95));
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255, 182, 217, 0.3);
         }
 
         /* --- Header & Navigation --- */
@@ -65,25 +79,29 @@
             left: 0;
             right: 0;
             z-index: 10;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.15);
-            padding: 10px 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.98), rgba(255, 245, 250, 0.98));
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(255, 20, 147, 0.12);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 182, 217, 0.3);
         }
         .nav-link {
             cursor: pointer;
             font-family: 'Chewy', cursive;
-            color: var(--color-deep-pink);
-            padding: 8px 10px;
-            border-radius: 12px;
-            transition: background-color 0.2s ease, transform 0.1s;
-            font-size: 0.9rem;
+            color: var(--color-hot-pink);
+            padding: 12px 14px;
+            border-radius: 16px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
             text-align: center;
             white-space: nowrap;
+            font-weight: 500;
+            letter-spacing: 0.02em;
         }
         .nav-link:hover {
-            background-color: var(--color-light-pink);
-            transform: translateY(-1px);
+            background: linear-gradient(135deg, var(--color-baby-pink) 0%, var(--color-light-pink) 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
         }
         .nav-link:focus-visible {
             outline: 3px solid var(--color-medium-pink);
@@ -93,27 +111,37 @@
         /* --- Titles & Headings --- */
         h1 {
             font-family: 'Chewy', cursive;
-            color: var(--color-deep-pink);
+            background: linear-gradient(135deg, var(--color-hot-pink) 0%, var(--color-medium-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-align: center;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            line-height: 1.1;
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+            text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.1);
         }
         .section-title {
-            color: var(--color-medium-pink);
-            font-size: 2.2rem;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            padding-bottom: 5px;
-            border-bottom: 3px dashed var(--color-light-pink);
+            background: linear-gradient(135deg, var(--color-medium-pink) 0%, var(--color-deep-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.4rem;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--color-light-pink);
             text-align: center;
+            letter-spacing: 0.02em;
         }
         h3 {
-            color: var(--color-deep-pink);
+            color: var(--color-hot-pink);
             font-weight: 700;
-            font-size: 1.4rem;
-            margin-top: 25px;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            letter-spacing: 0.01em;
         }
         
         /* --- Cover Page Styling --- */
@@ -126,51 +154,63 @@
 
         /* --- Key Parameters --- */
         .key-params {
-            background: linear-gradient(90deg, #ff69b4 0%, #ff85a2 100%);
+            background: linear-gradient(135deg, var(--color-hot-pink) 0%, var(--color-medium-pink) 100%);
             color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 25px 0;
+            padding: 25px;
+            border-radius: var(--radius-card);
+            margin: 30px 0;
             text-align: center;
             font-size: 1.1em;
-            line-height: 1.6;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+            line-height: 1.8;
+            box-shadow: var(--shadow-md);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         .key-params > p {
-            margin: 5px 10px;
+            margin: 8px 12px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
         }
 
         /* --- Workout List --- */
         .exercise-list li {
-            background: linear-gradient(45deg, #ffebee 0%, #f8bbd0 100%);
-            margin-bottom: 10px;
-            padding: 18px 25px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--color-baby-pink) 100%);
+            margin-bottom: 12px;
+            padding: 20px 28px;
+            border-radius: var(--radius-soft);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 1.1em;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--color-input-border);
+            transition: all 0.2s ease;
+        }
+        .exercise-list li:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
         }
         .sets-reps {
             font-weight: 700;
-            color: #880e4f;
+            color: var(--color-hot-pink);
             min-width: 90px;
             text-align: right;
-            background-color: #ffebf0;
-            padding: 6px 12px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #FFF5FA, #FFE4F0);
+            padding: 8px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--color-light-pink);
+            font-size: 0.95em;
         }
         .superset-item {
-            background: linear-gradient(45deg, #fff3e0 0%, #ffe0b2 100%);
-            border: 1px solid #ffcc80;
+            background: linear-gradient(135deg, #FFF9F0 0%, #FFE8CC 100%);
+            border: 2px solid #FFD699;
         }
         .superset-item .sets-reps {
-            background-color: #fff8e1;
-            color: #e65100;
+            background: linear-gradient(135deg, #FFF4E6, #FFEACC);
+            color: #E65100;
+            border-color: #FFB366;
         }
 
         /* --- Movement Focus --- */
@@ -235,35 +275,43 @@
 
         /* --- NEW TRACKER/ANALYTICS CSS --- */
         .tracker-section {
-            background-color: var(--color-tracker-panel);
-            border: 2px solid var(--color-tracker-border);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 30px;
-            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.1);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(255, 245, 250, 0.98));
+            border: 2px solid var(--color-light-pink);
+            border-radius: var(--radius-card);
+            padding: 35px;
+            margin-top: 35px;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(8px);
         }
 
         /* Timer Display */
         .rest-timer-container {
-            background-color: #fff;
-            padding: 25px;
-            border-radius: 20px;
-            border: 1px solid var(--color-tracker-border);
+            background: linear-gradient(135deg, #FFFFFF, var(--color-baby-pink));
+            padding: 30px;
+            border-radius: var(--radius-card);
+            border: 2px solid var(--color-light-pink);
             text-align: center;
             max-width: 500px;
             margin: 24px auto 30px;
-            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+            box-shadow: var(--shadow-md);
         }
         .timer-display {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            color: var(--color-deep-pink);
-            margin-bottom: 15px;
-            letter-spacing: 2px;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--color-hot-pink), var(--color-deep-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
         }
         .timer-display.running {
-            color: var(--color-progress);
+            background: linear-gradient(135deg, var(--color-progress), #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
             animation: pulse 1s ease-in-out infinite;
         }
         .timer-display.finished {
@@ -323,31 +371,93 @@
         
         /* Exercise Entry */
         .exercise-entry {
-            background: #FDFDFD; 
-            padding: 20px;
-            border-radius: 20px;
-            border: 1px solid #f9e4eb;
-            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.05);
-            margin-bottom: 16px;
-            transition: all 0.3s;
+            background: linear-gradient(to bottom right, #FFFFFF, var(--color-baby-pink));
+            padding: 24px;
+            border-radius: var(--radius-soft);
+            border: 2px solid var(--color-input-border);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .exercise-entry:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
         }
 
-        .exercise-name-compound { color: var(--color-compound) !important; font-weight: 700; }
-        .exercise-name-isolation { color: var(--color-isolation) !important; font-weight: 700; }
-        .exercise-name-compound span, .exercise-name-isolation span { font-family: 'Poppins', sans-serif; font-weight: 600; }
+        .exercise-name-compound { 
+            color: var(--color-hot-pink) !important;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .exercise-name-isolation { 
+            color: var(--color-isolation) !important;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .exercise-name-compound span, .exercise-name-isolation span { 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
 
         .set-input-group {
-             background: #FAFAFA;
-             border-radius: 12px;
-             border: 1px solid #eee;
+            background: linear-gradient(to right, #FFFFFF, #FFF5FA);
+            border-radius: 16px;
+            border: 1px solid var(--color-input-border);
+            box-shadow: var(--shadow-sm);
         }
-        .set-input-group input {
+        
+        /* Workout Input Sizing - Mobile Optimized */
+        .workout-input-weight,
+        .workout-input-reps {
             background-color: white;
             color: var(--color-text-dark);
-            border: 1px solid #f0f0f0;
-            border-radius: 10px;
+            border: 2px solid var(--color-input-border);
+            border-radius: 12px;
             font-family: 'Poppins', sans-serif;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 16px !important;
+            padding: 12px 10px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .workout-input-weight {
+            width: 110px;
+            min-width: 90px;
+        }
+        
+        .workout-input-reps {
+            width: 85px;
+            min-width: 70px;
+        }
+        
+        .workout-input-weight:focus,
+        .workout-input-reps:focus {
+            outline: none;
+            border-color: var(--color-hot-pink);
+            box-shadow: 0 0 0 3px rgba(255, 20, 147, 0.15);
+            transform: scale(1.02);
+        }
+        
+        .workout-input-weight.completed,
+        .workout-input-reps.completed {
+            background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+            border-color: #6EE7B7;
+            font-weight: 700;
+        }
+        
+        /* Mobile: Stack inputs if needed */
+        @media (max-width: 380px) {
+            .set-input-group {
+                flex-direction: column;
+                align-items: stretch !important;
+            }
+            .workout-input-weight,
+            .workout-input-reps {
+                width: 100%;
+                min-width: 100%;
+            }
         }
         .set-input-group input.completed {
             border-color: var(--color-progress);
@@ -366,33 +476,53 @@
 
         /* Buttons */
         .btn {
-            padding: 12px 24px;
-            background: var(--color-deep-pink);
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--color-hot-pink) 0%, var(--color-deep-pink) 100%);
             color: white;
-            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
-            border-radius: 15px;
-            transition: all 0.2s;
-            font-size: 0.9rem;
+            box-shadow: var(--shadow-md);
+            border-radius: 18px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 20, 147, 0.35);
+        }
+        .btn:active {
+            transform: translateY(0);
         }
         .btn-secondary {
             padding: 12px 24px;
-            background-color: white;
-            color: var(--color-deep-pink);
-            border: 1px solid var(--color-tracker-border);
-            border-radius: 15px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--color-baby-pink) 100%);
+            color: var(--color-hot-pink);
+            border: 2px solid var(--color-light-pink);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            font-weight: 600;
         }
-        .btn-secondary:hover { background-color: var(--color-light-pink); color: var(--color-text-dark); }
-        .btn-danger { background: var(--color-danger); color: #fff; }
-        .btn-danger:hover { filter: brightness(0.95); }
+        .btn-secondary:hover { 
+            background: linear-gradient(135deg, var(--color-baby-pink) 0%, var(--color-light-pink) 100%);
+            border-color: var(--color-medium-pink);
+            transform: translateY(-1px);
+        }
+        .btn-danger { 
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            color: #fff;
+        }
+        .btn-danger:hover { 
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+        }
         .fullscreen-toggle-button {
-            border-radius: 15px !important;
+            border-radius: 16px !important;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
@@ -1341,26 +1471,26 @@
                 const completedClass = set ? 'completed' : '';
 
                 html += `
-                    <div class="set-input-group flex items-center bg-gray-50 p-3 rounded-xl">
-                        <label for="ex${index}_set${i}_weight" class="text-xs uppercase font-semibold text-gray-600 min-w-[50px]">Set ${i}</label>
+                    <div class="set-input-group flex flex-wrap items-center gap-2 bg-gradient-to-r from-white to-pink-50 p-3 rounded-xl border border-pink-100">
+                        <label for="ex${index}_set${i}_weight" class="text-xs uppercase font-semibold text-pink-600 min-w-[45px]">Set ${i}</label>
                         <input 
                             type="number" 
-                            placeholder="Weight (lbs)" 
+                            placeholder="Weight" 
                             id="ex${index}_set${i}_weight"
                             oninput="handleSetInput(${index}, ${i})"
-                            class="flex-1 p-2 rounded-lg ${completedClass}"
+                            class="workout-input-weight ${completedClass}"
                             min="0" step="0.1" value="${weightValue}"
                         />
-                        <span class="mx-2 text-gray-500">x</span>
-                        <label for="ex${index}_set${i}_reps" class="sr-only">Reps</label>
+                        <span class="text-gray-400 font-bold">×</span>
                         <input 
                             type="number" 
                             placeholder="Reps" 
                             id="ex${index}_set${i}_reps"
                             oninput="handleSetInput(${index}, ${i})"
-                            class="flex-1 p-2 rounded-lg ${completedClass}"
+                            class="workout-input-reps ${completedClass}"
                             min="0" step="1" value="${repsValue}"
                         />
+                        <label for="ex${index}_set${i}_reps" class="sr-only">Reps</label>
                     </div>
                 `;
             }
