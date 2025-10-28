@@ -26,13 +26,13 @@
 
             /* Intensity Colors */
             --color-compound: var(--color-deep-pink); 
-            --color-isolation: #00BCD4; /* Soft Cyan for isolation contrast */
-            --color-progress: #4CAF50; /* Green for success */
+            --color-isolation: #00BCD4;
+            --color-progress: #4CAF50;
             --color-danger: #FF6B6B;
             --color-history-count: var(--color-deep-pink); 
             
             /* General Styling */
-            --radius-soft: 15px; /* Standardizing on 15px radius for soft look */
+            --radius-soft: 15px;
         }
 
         body {
@@ -85,6 +85,10 @@
             background-color: var(--color-light-pink);
             transform: translateY(-1px);
         }
+        .nav-link:focus-visible {
+            outline: 3px solid var(--color-medium-pink);
+            outline-offset: 2px;
+        }
         
         /* --- Titles & Headings --- */
         h1 {
@@ -112,7 +116,7 @@
             margin-bottom: 10px;
         }
         
-        /* --- Cover Page Styling (Ensuring h2 is correct) --- */
+        /* --- Cover Page Styling --- */
         .cover-page h2 {
             font-family: 'Chewy', cursive !important;
             color: var(--color-deep-pink);
@@ -139,7 +143,7 @@
             margin: 5px 10px;
         }
 
-        /* --- Workout List (Original) --- */
+        /* --- Workout List --- */
         .exercise-list li {
             background: linear-gradient(45deg, #ffebee 0%, #f8bbd0 100%);
             margin-bottom: 10px;
@@ -169,7 +173,7 @@
             color: #e65100;
         }
 
-        /* --- Movement Focus (Box Background for Nutrition/Workouts) --- */
+        /* --- Movement Focus --- */
         .movement-focus {
             background-color: #f7f7f7; 
             border-radius: 15px;
@@ -178,7 +182,7 @@
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
         }
 
-        /* --- Nutrition Table Restoration --- */
+        /* --- Nutrition Table --- */
         .nutrition-table {
             width: 100%;
             border-collapse: collapse;
@@ -202,7 +206,7 @@
             background-color: #fce4ec;
         }
         .nutrition-table td strong {
-            color: var(--color-deep-pink); /* Enforce deep pink for numbers */
+            color: var(--color-deep-pink);
             font-size: 1.2em;
         }
         
@@ -228,15 +232,8 @@
             display: block !important; 
             padding-top: 0 !important;
         }
-        .fullscreen-mode .fullscreen-toggle-button { 
-            display: block !important;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
 
-        /* --- NEW TRACKER/ANALYTICS CSS ADAPTATION --- */
+        /* --- NEW TRACKER/ANALYTICS CSS --- */
         .tracker-section {
             background-color: var(--color-tracker-panel);
             border: 2px solid var(--color-tracker-border);
@@ -246,11 +243,11 @@
             box-shadow: 0 5px 20px rgba(233, 30, 99, 0.1);
         }
 
-        /* Timer Display - Font/Aesthetic Fix */
+        /* Timer Display */
         .rest-timer-container {
             background-color: #fff;
             padding: 25px;
-            border-radius: 20px; /* Highly rounded */
+            border-radius: 20px;
             border: 1px solid var(--color-tracker-border);
             text-align: center;
             max-width: 500px;
@@ -258,7 +255,7 @@
             box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
         }
         .timer-display {
-            font-family: 'Poppins', sans-serif; /* Softened timer font */
+            font-family: 'Poppins', sans-serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
             color: var(--color-deep-pink);
@@ -274,14 +271,18 @@
             animation: flash 0.5s ease-in-out infinite;
         }
 
-        /* Timer Presets and Custom Inputs - Increased Rounding & Style */
-        .timer-controls {
-            gap: 12px; /* Maintain gap */
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .timer-display.running, .timer-display.finished {
+                animation: none !important;
+            }
         }
+
+        .timer-controls { gap: 12px; }
         .timer-preset {
-            padding: 16px 25px !important; /* Increased padding */
-            font-size: 1rem !important; /* Increased font size */
-            border-radius: 20px !important; /* Highly rounded */
+            padding: 16px 25px !important;
+            font-size: 1rem !important;
+            border-radius: 20px !important;
             background-color: var(--color-tracker-panel) !important;
             border: 1px solid var(--color-tracker-border) !important;
             color: var(--color-deep-pink) !important;
@@ -289,28 +290,23 @@
             transition: all 0.2s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .timer-preset:hover {
-            background-color: var(--color-light-pink) !important;
-        }
+        .timer-preset:hover { background-color: var(--color-light-pink) !important; }
         .timer-custom input {
             padding: 12px 16px;
-            border-radius: 20px !important; /* Highly rounded */
+            border-radius: 20px !important;
             border: 1px solid var(--color-tracker-border) !important;
             background-color: white !important;
             font-family: 'Poppins', sans-serif;
             color: var(--color-text-dark);
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        .timer-custom button {
-            border-radius: 20px !important; /* Highly rounded */
-        }
+        .timer-custom button { border-radius: 20px !important; }
 
-
-        /* Tracker Controls & Inputs - Harmonizing Select and Date Inputs */
+        /* Tracker Controls */
         .tracker-controls select,
         .tracker-controls input[type="date"] {
             padding: 12px 16px !important; 
-            border-radius: 15px !important; /* Aggressively rounded */
+            border-radius: 15px !important;
             border: 1px solid var(--color-tracker-border) !important;
             background-color: white !important;
             color: var(--color-text-dark) !important;
@@ -325,47 +321,32 @@
             box-shadow: 0 0 0 3px rgba(240, 98, 146, 0.2) !important;
         }
         
-        /* Exercise Entry Styling */
+        /* Exercise Entry */
         .exercise-entry {
-            /* Extremely light background to blend */
             background: #FDFDFD; 
             padding: 20px;
-            border-radius: 20px; /* Stronger rounding for main card */
+            border-radius: 20px;
             border: 1px solid #f9e4eb;
             box-shadow: 0 4px 10px rgba(233, 30, 99, 0.05);
             margin-bottom: 16px;
             transition: all 0.3s;
         }
 
-        /* Color-Coded Exercise Name */
-        .exercise-name-compound {
-            color: var(--color-compound) !important;
-            font-weight: 700;
-        }
-        .exercise-name-isolation {
-            color: var(--color-isolation) !important;
-            font-weight: 700;
-        }
-        .exercise-name-compound span, .exercise-name-isolation span {
-             font-family: 'Poppins', sans-serif;
-             font-weight: 600;
-        }
+        .exercise-name-compound { color: var(--color-compound) !important; font-weight: 700; }
+        .exercise-name-isolation { color: var(--color-isolation) !important; font-weight: 700; }
+        .exercise-name-compound span, .exercise-name-isolation span { font-family: 'Poppins', sans-serif; font-weight: 600; }
 
         .set-input-group {
-             background: #FAFAFA; /* Very light subtle background */
+             background: #FAFAFA;
              border-radius: 12px;
              border: 1px solid #eee;
-        }
-        .set-input-group label {
-            /* Fix: Reduced min-width to prevent mobile overflow */
-            min-width: 30px; 
         }
         .set-input-group input {
             background-color: white;
             color: var(--color-text-dark);
             border: 1px solid #f0f0f0;
-            border-radius: 10px; /* Slightly smaller for inputs */
-            font-family: 'Poppins', sans-serif; /* Use theme font */
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
             font-weight: 500;
         }
         .set-input-group input.completed {
@@ -389,24 +370,27 @@
             background: var(--color-deep-pink);
             color: white;
             box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
-            border-radius: 15px; /* Aggressively rounded */
+            border-radius: 15px;
             transition: all 0.2s;
             font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
         .btn-secondary {
             padding: 12px 24px;
             background-color: white;
             color: var(--color-deep-pink);
             border: 1px solid var(--color-tracker-border);
-            border-radius: 15px; /* Aggressively rounded */
+            border-radius: 15px;
             box-shadow: 0 1px 4px rgba(0,0,0,0.1);
         }
-        .btn-secondary:hover {
-            background-color: var(--color-light-pink);
-            color: var(--color-text-dark);
-        }
+        .btn-secondary:hover { background-color: var(--color-light-pink); color: var(--color-text-dark); }
+        .btn-danger { background: var(--color-danger); color: #fff; }
+        .btn-danger:hover { filter: brightness(0.95); }
         .fullscreen-toggle-button {
             border-radius: 15px !important;
             font-family: 'Poppins', sans-serif;
@@ -417,7 +401,7 @@
         .completion-bar {
             background: var(--color-tracker-panel);
             border: 1px solid var(--color-tracker-border);
-            border-radius: 15px; /* Consistent rounding */
+            border-radius: 15px;
             height: 30px;
             margin-bottom: 24px;
             overflow: hidden;
@@ -425,14 +409,14 @@
         }
         .completion-fill {
             background: linear-gradient(90deg, var(--color-progress), rgba(76, 175, 80, 0.5));
-            border-radius: 15px; /* Consistent rounding */
+            border-radius: 15px;
         }
         .completion-text {
             color: var(--color-text-dark);
             font-family: 'Poppins', sans-serif;
         }
 
-        /* History List Styling */
+        /* History List */
         #history-list .flex {
             background: #fffcfc;
             border-left: 4px solid var(--color-medium-pink);
@@ -449,8 +433,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
-
-        /* Analytics Specific Styles */
+        /* Analytics */
         .pr-list, .chart-container {
             border-radius: 15px;
         }
@@ -461,21 +444,11 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             font-family: 'Poppins', sans-serif;
         }
-        .pr-volume {
-            color: var(--color-deep-pink);
-            font-weight: 700;
-        }
-        .pr-exercise {
-             color: var(--color-text-dark);
-             font-weight: 600;
-        }
-        .analytics-grid h3 {
-             font-family: 'Poppins', sans-serif !important;
-        }
-        .chart-container {
-            background: white;
-            border: 1px solid #f0f0f0;
-        }
+        .pr-volume { color: var(--color-deep-pink); font-weight: 700; }
+        .pr-exercise { color: var(--color-text-dark); font-weight: 600; }
+        .analytics-grid h3 { font-family: 'Poppins', sans-serif !important; }
+        .chart-container { background: white; border: 1px solid #f0f0f0; }
+
         /* Message Box */
         #message-box {
             background: white;
@@ -484,7 +457,6 @@
             box-shadow: 0 5px 30px rgba(233, 30, 99, 0.5);
             font-family: 'Poppins', sans-serif;
         }
-        
 
         /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
@@ -493,39 +465,31 @@
             .section-title { font-size: 1.8rem; }
             .sticky-nav .max-w-screen-xl { flex-wrap: wrap; }
             .nav-link { flex: 1 0 16%; margin: 4px 2px; } 
-            
-            .tracker-controls {
-                justify-content: center;
-                gap: 8px;
-            }
-            .tracker-controls > div {
-                flex: 1 1 45%; /* Make select boxes wrap nicely */
-                min-width: 150px;
-            }
-            .timer-preset {
-                padding: 12px 20px !important;
-                font-size: 0.9rem !important;
-            }
+            .tracker-controls { justify-content: center; gap: 8px; }
+            .tracker-controls > div { flex: 1 1 45%; min-width: 150px; }
+            .timer-preset { padding: 12px 20px !important; font-size: 0.9rem !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sticky Navigation Bar --><div class="sticky-nav">
+    <!-- Sticky Navigation Bar -->
+    <div class="sticky-nav">
         <div class="max-w-screen-xl mx-auto flex justify-around items-center px-2 sm:px-4">
-            <span class="nav-link" onclick="scrollToSection('cover')" data-target="cover">Welcome</span>
-            <span class="nav-link" onclick="scrollToSection('nutrition')" data-target="nutrition">Diet Goal</span>
-            <span class="nav-link" onclick="scrollToSection('day1')" data-target="day1">Day 1</span>
-            <span class="nav-link" onclick="scrollToSection('day2')" data-target="day2">Day 2</span>
-            <span class="nav-link" onclick="scrollToSection('day4')" data-target="day4">Day 4</span>
-            <span class="nav-link" onclick="scrollToSection('day5')" data-target="day5">Day 5</span>
-            <span class="nav-link" onclick="scrollToSection('tracker')">Tracker</span>
-            <span class="nav-link" onclick="scrollToSection('analytics')">Analytics</span>
+            <button type="button" class="nav-link" data-target="cover">Welcome</button>
+            <button type="button" class="nav-link" data-target="nutrition">Diet Goal</button>
+            <button type="button" class="nav-link" data-target="day1">Day 1</button>
+            <button type="button" class="nav-link" data-target="day2">Day 2</button>
+            <button type="button" class="nav-link" data-target="day4">Day 4</button>
+            <button type="button" class="nav-link" data-target="day5">Day 5</button>
+            <button type="button" class="nav-link" data-target="tracker">Tracker</button>
+            <button type="button" class="nav-link" data-target="analytics">Analytics</button>
         </div>
     </div>
 
     <div class="main-container">
-        <!-- --- COVER PAGE --- --><section id="cover" class="pt-4">
+        <!-- --- COVER PAGE --- -->
+        <section id="cover" class="pt-4">
             <h1 class="text-3xl text-center" style="font-family: 'Chewy', cursive; color: var(--color-deep-pink);">High-Intensity Workout Plan</h1>
             <div class="cover-page">
                 <h2 style="font-family: 'Chewy', cursive; color: var(--color-deep-pink); font-size: 2.8rem; margin-bottom: 15px;">Welcome, Jasmin!</h2>
@@ -536,12 +500,13 @@
                     We’re focusing on <strong>quality over quantity</strong>. You'll be using very heavy weight for only <strong>one all-out set to failure</strong> per exercise, paired with a super-slow tempo (<strong>2 seconds up, 3 seconds down</strong>). This is the fastest, most efficient way to build strength and lean muscle.
                 </p>
                 <p>
-                    Use the navigation bar above to quickly switch between your workout days and the new interactive **Workout Tracker**. Consistency is key—I know you're going to crush this!
+                    Use the navigation bar above to quickly switch between your workout days and the new interactive <strong>Workout Tracker</strong>. Consistency is key—I know you're going to crush this!
                 </p>
             </div>
         </section>
 
-        <!-- --- NUTRITION TARGETS --- --><section id="nutrition" class="pt-4">
+        <!-- --- NUTRITION TARGETS --- -->
+        <section id="nutrition" class="pt-4">
             <h2 class="section-title">NUTRITION TARGETS</h2>
 
             <div class="movement-focus">
@@ -584,7 +549,9 @@
             </div>
         </section>
 
-        <div class="h-8"></div> <!-- Spacer --><!-- Global Schedule Summary --><h3 class="text-center text-xl">Weekly Schedule</h3>
+        <div class="h-8"></div>
+        <!-- Global Schedule Summary -->
+        <h3 class="text-center text-xl">Weekly Schedule</h3>
         <ul class="text-center text-sm mb-8">
             <li><span class="font-semibold text-pink-600">Monday:</span> Quads + Cardio</li>
             <li><span class="font-semibold text-pink-600">Tuesday:</span> Hamstrings + Cardio</li>
@@ -602,7 +569,8 @@
             <p><strong>CARDIO:</strong> 20 min StairMaster (Level 7) Post-Lift</p>
         </div>
 
-        <!-- --- DAY 1: QUADS --- --><section id="day1" class="pt-4">
+        <!-- --- DAY 1: QUADS --- -->
+        <section id="day1" class="pt-4">
             <h2 class="section-title">DAY 1: QUAD FOCUS (Monday)</h2>
             <ul class="exercise-list">
                 <li><span>Leg Extension (1 Warm-up + 1 to Failure)</span><span class="sets-reps">10–12 reps</span></li>
@@ -620,7 +588,8 @@
             </div>
         </section>
         
-        <!-- --- DAY 2: HAMSTRINGS --- --><section id="day2" class="pt-4">
+        <!-- --- DAY 2: HAMSTRINGS --- -->
+        <section id="day2" class="pt-4">
             <h2 class="section-title">DAY 2: HAMSTRING STRETCH (Tuesday)</h2>
             <ul class="exercise-list">
                 <li><span>Lying Hamstring Curl (1 Warm-up + 1 to Failure)</span><span class="sets-reps">10–12 reps</span></li>
@@ -638,7 +607,8 @@
             </div>
         </section>
         
-        <!-- --- DAY 4: GLUTES --- --><section id="day4" class="pt-4">
+        <!-- --- DAY 4: GLUTES --- -->
+        <section id="day4" class="pt-4">
             <h2 class="section-title">DAY 4: GLUTE FOCUS (Thursday)</h2>
             <ul class="exercise-list">
                 <li><span>Hip Thrust (1 Warm-up + 1 to Failure)</span><span class="sets-reps">10–12 reps</span></li>
@@ -656,7 +626,8 @@
             </div>
         </section>
         
-        <!-- --- DAY 5: UPPER BODY --- --><section id="day5" class="pt-4">
+        <!-- --- DAY 5: UPPER BODY --- -->
+        <section id="day5" class="pt-4">
             <h2 class="section-title">DAY 5: UPPER BODY PUSH/PULL (Friday)</h2>
             <ul class="exercise-list">
                 <li><span>Lat Pulldown (Wide Grip)</span><span class="sets-reps">10–12 reps</span></li>
@@ -678,12 +649,13 @@
             </div>
         </section>
         
-        <!-- --- WORKOUT TRACKER SECTION (MIGRATED) --- --><section id="tracker" class="pt-4">
+        <!-- --- WORKOUT TRACKER SECTION --- -->
+        <section id="tracker" class="pt-4">
             <h2 class="section-title">INTERACTIVE WORKOUT TRACKER</h2>
             <div class="tracker-section">
                 <h3 style="text-align: center; color: var(--color-deep-pink); margin-bottom: 20px;">⏱️ Rest Timer</h3>
                 <div class="rest-timer-container">
-                    <div class="timer-display" id="timerDisplay">0:00</div>
+                    <div class="timer-display" id="timerDisplay" aria-live="polite">0:00</div>
                     <div class="timer-controls flex justify-center flex-wrap gap-3">
                         <button class="timer-preset btn-secondary" onclick="setTimer(60)">1 min</button>
                         <button class="timer-preset btn-secondary" onclick="setTimer(90)">1:30</button>
@@ -697,15 +669,15 @@
                     </div>
                     <div class="timer-buttons flex justify-center space-x-3 mt-4">
                         <button class="btn" id="startBtn" onclick="startTimer()">▶️ Start</button>
-                        <button class="btn" style="background-color: var(--color-danger);" onclick="resetTimer()">⏹️ Reset</button>
+                        <button class="btn btn-danger" onclick="resetTimer()">⏹️ Reset</button>
                     </div>
-                    <div class="timer-progress-bar h-2 bg-gray-200 rounded-full mt-4">
+                    <div class="timer-progress-bar h-2 bg-gray-200 rounded-full mt-4" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                         <div class="timer-progress-fill h-full rounded-full" id="progressFill" style="width: 0%;"></div>
                     </div>
                 </div>
 
                 <div class="full-screen-btn-container text-right mb-4">
-                    <button class="fullscreen-toggle-button btn btn-secondary text-sm" onclick="toggleFullscreen()" style="padding: 10px 18px; border-radius: 15px;">
+                    <button id="enter-fs-btn" class="fullscreen-toggle-button btn btn-secondary text-sm" onclick="toggleFullscreen()" style="padding: 10px 18px; border-radius: 15px;">
                         Go Fullscreen 🖥️
                     </button>
                 </div>
@@ -728,23 +700,25 @@
                 </div>
                 
                 <div class="completion-bar h-8 rounded-lg mb-6 relative">
-                    <div id="completionFill" class="completion-fill h-full rounded-lg absolute"></div>
+                    <div id="completionFill" class="completion-fill h-full rounded-lg absolute" style="width:0%"></div>
                     <div id="completionText" class="completion-text absolute w-full text-center text-sm font-bold">WORKOUT PROGRESS: 0% Completed</div>
                 </div>
 
-                <!-- Single Exercise Display Container --><div id="current-exercise-container" class="mt-6">
+                <!-- Single Exercise Display Container -->
+                <div id="current-exercise-container" class="mt-6">
                     <p class="text-center text-gray-500">Select a day to begin tracking your workout.</p>
                 </div>
 
                 <div class="flex justify-center space-x-3 mt-6 flex-wrap">
-                    <button class="btn" onclick="saveWorkout()">💾 Save Workout</button>
+                    <button id="save-workout-btn" class="btn" onclick="saveWorkout()">💾 Save Workout</button>
                     <button class="btn btn-secondary text-sm" onclick="loadWorkout()">📂 Load Last Workout</button>
-                    <button class="btn" style="background-color: var(--color-danger);" onclick="clearWorkout()">🗑️ Clear Form</button>
+                    <button class="btn btn-danger" onclick="clearWorkout()">🗑️ Clear Form</button>
                 </div>
             </div>
         </section>
         
-        <!-- --- ANALYTICS SECTION (MIGRATED) --- --><section id="analytics" class="pt-4">
+        <!-- --- ANALYTICS SECTION --- -->
+        <section id="analytics" class="pt-4">
             <h2 class="section-title">PERFORMANCE ANALYTICS</h2>
             <div class="tracker-section">
                  <h3 style="text-align: center; color: var(--color-deep-pink); margin-bottom: 20px;">🔥 Strength Trends</h3>
@@ -753,7 +727,7 @@
                     <div class="md:col-span-2 p-4 bg-white rounded-xl shadow-inner border border-gray-100">
                         <h3 style="color:var(--color-isolation); margin-top:0; font-family: 'Poppins', sans-serif !important;">Total Set Count Progression (Volume)</h3>
                         <p class="text-sm text-gray-500 mb-4">Total number of working sets completed per workout, showing overall volume trend.</p>
-                        <div class="chart-container max-h-96">
+                        <div class="chart-container max-h-96" style="height:320px">
                             <canvas id="volumeChart"></canvas>
                         </div>
                     </div>
@@ -781,7 +755,7 @@
             <p class="text-center text-lg font-semibold mt-4">Add weight or slow the tempo ONLY when 12 quality reps are achieved on the main set.</p>
         </div>
         
-        <!-- Workout History moved here for display purposes -->
+        <!-- Workout History -->
         <div class="movement-focus mt-10" id="history-list-container">
             <h3>Workout History</h3>
             <div id="history-list" class="mt-4">
@@ -790,11 +764,13 @@
         </div>
     </div>
 
-    <!-- Fullscreen Exit Button (Fixed position, only visible in FS mode) --><button class="fullscreen-toggle-button btn btn-danger text-sm" onclick="toggleFullscreen()" style="display:none; border-radius: 15px !important;">
+    <!-- Fullscreen Exit Button -->
+    <button id="exit-fs-btn" class="fullscreen-toggle-button btn btn-danger text-sm" onclick="toggleFullscreen()" style="display:none; border-radius: 15px !important; position:fixed; top:20px; right:20px; z-index:1000;">
         Exit Fullscreen ❌
     </button>
     
-    <!-- Custom Message Box Modal --><div id="message-box" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 z-50 rounded-2xl shadow-xl border-2 border-pink-400" style="display:none;">
+    <!-- Custom Message Box Modal -->
+    <div id="message-box" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 z-50 rounded-2xl shadow-xl border-2 border-pink-400" style="display:none;">
         <div id="message-box-content" class="mb-4 text-gray-800 font-semibold text-lg"></div>
         <div id="message-box-buttons" class="flex justify-center space-x-3">
             <button class="btn" id="message-box-btn-ok">OK</button>
@@ -803,35 +779,33 @@
 
 
     <script>
-        // --- JAVASCRIPT FOR SCROLLING ---
+        // --- SCROLLING (dynamic offset) ---
         function scrollToSection(targetId) {
             const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 60,
-                    behavior: 'smooth'
-                });
-            }
+            if (!targetElement) return;
+            const nav = document.querySelector('.sticky-nav');
+            const offset = nav ? nav.offsetHeight + 10 : 60;
+            window.scrollTo({
+                top: targetElement.getBoundingClientRect().top + window.scrollY - offset,
+                behavior: 'smooth'
+            });
         }
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.nav-link').forEach(link => {
                 const targetId = link.getAttribute('data-target');
                 if (targetId) {
-                    link.addEventListener('click', (event) => {
-                        scrollToSection(targetId);
-                    });
+                    link.addEventListener('click', () => scrollToSection(targetId));
                 }
             });
         });
 
-        // --- CUSTOM MESSAGE BOX FUNCTIONS (Replacing alert/confirm) ---
+        // --- CUSTOM MESSAGE BOX ---
         function showMessage(message, onConfirm = null) {
             const box = document.getElementById('message-box');
             const content = document.getElementById('message-box-content');
             const buttons = document.getElementById('message-box-buttons');
             let okBtn = document.getElementById('message-box-btn-ok');
 
-            // Clear previous state and ensure base OK button exists
             if (!okBtn) {
                 okBtn = document.createElement('button');
                 okBtn.id = 'message-box-btn-ok';
@@ -844,7 +818,6 @@
             box.style.display = 'block';
 
             if (onConfirm) {
-                // Confirmation dialog
                 okBtn.textContent = 'Confirm';
                 okBtn.className = 'btn';
                 okBtn.style.backgroundColor = 'var(--color-danger)';
@@ -855,16 +828,9 @@
                 
                 buttons.appendChild(cancelBtn);
 
-                okBtn.onclick = () => {
-                    box.style.display = 'none';
-                    onConfirm(true);
-                };
-                cancelBtn.onclick = () => {
-                    box.style.display = 'none';
-                    onConfirm(false);
-                };
+                okBtn.onclick = () => { box.style.display = 'none'; onConfirm(true); };
+                cancelBtn.onclick = () => { box.style.display = 'none'; onConfirm(false); };
             } else {
-                // Simple alert
                 okBtn.textContent = 'OK';
                 okBtn.className = 'btn';
                 okBtn.style.backgroundColor = 'var(--color-deep-pink)';
@@ -872,7 +838,7 @@
             }
         }
         
-        // --- FULLSCREEN LOGIC ---
+        // --- FULLSCREEN LOGIC (unique buttons) ---
         function toggleFullscreen() {
             const doc = window.document;
             const docEl = doc.documentElement;
@@ -887,13 +853,13 @@
         }
         function handleFullscreenChange() {
             const body = document.body;
-            const exitBtn = document.querySelector('.fullscreen-toggle-button');
-            if (document.fullscreenElement) {
-                body.classList.add('fullscreen-mode');
-                if (exitBtn) exitBtn.style.display = 'block';
-            } else {
-                body.classList.remove('fullscreen-mode');
-                if (exitBtn) exitBtn.style.display = 'none';
+            const enterBtn = document.getElementById('enter-fs-btn');
+            const exitBtn  = document.getElementById('exit-fs-btn');
+            const isFS = !!document.fullscreenElement;
+            body.classList.toggle('fullscreen-mode', isFS);
+            if (enterBtn && exitBtn) {
+                enterBtn.style.display = isFS ? 'none' : 'inline-flex';
+                exitBtn.style.display  = isFS ? 'inline-flex' : 'none';
             }
         }
         document.addEventListener('fullscreenchange', handleFullscreenChange);
@@ -901,12 +867,12 @@
         document.addEventListener('mozfullscreenchange', handleFullscreenChange);
         document.addEventListener('msfullscreenchange', handleFullscreenChange);
         
-        // --- REST TIMER LOGIC ---
+        // --- REST TIMER ---
         let timerInterval = null;
         let timerSeconds = 0;
         let totalSeconds = 0;
         let isPaused = false;
-        const timerAudio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDGH0fPTgjMGHm7A7+OZRQ0PVa3n8KC9fGgxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZ');
+        const timerAudio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDGH0fPTgjMGHm7A7+OZRQ0PVa3n8KC9fGgxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZ');
 
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
@@ -918,6 +884,7 @@
             totalSeconds = seconds;
             document.getElementById('timerDisplay').textContent = formatTime(timerSeconds);
             document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('progressFill').setAttribute('aria-valuenow', '100');
             document.getElementById('timerDisplay').classList.remove('running', 'finished');
             document.getElementById('startBtn').textContent = '▶️ Start';
             isPaused = false;
@@ -936,6 +903,11 @@
             const timerDisplay = document.getElementById('timerDisplay');
             const startBtn = document.getElementById('startBtn');
 
+            // Ask permission the first time the user actually uses the timer
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission().catch(()=>{});
+            }
+
             if (timerSeconds === 0 && !isPaused) { showMessage('Please set a timer first!'); return; }
             if (timerInterval) {
                 clearInterval(timerInterval); timerInterval = null; isPaused = true;
@@ -946,8 +918,10 @@
                 timerInterval = setInterval(() => {
                     timerSeconds--;
                     document.getElementById('timerDisplay').textContent = formatTime(timerSeconds);
-                    const percentage = (timerSeconds / totalSeconds) * 100;
-                    document.getElementById('progressFill').style.width = percentage + '%';
+                    const percentage = Math.max(0, Math.round((timerSeconds / totalSeconds) * 100));
+                    const fill = document.getElementById('progressFill');
+                    fill.style.width = percentage + '%';
+                    fill.setAttribute('aria-valuenow', String(percentage));
                     if (timerSeconds <= 0) {
                         clearInterval(timerInterval); timerInterval = null;
                         timerDisplay.classList.remove('running'); timerDisplay.classList.add('finished');
@@ -966,13 +940,21 @@
             document.getElementById('timerDisplay').textContent = formatTime(timerSeconds);
             document.getElementById('timerDisplay').classList.remove('running', 'finished');
             document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('progressFill').setAttribute('aria-valuenow', '100');
             document.getElementById('startBtn').textContent = '▶️ Start';
         }
-        if ('Notification' in window && Notification.permission === 'default') { Notification.requestPermission(); }
 
+        // --- STORAGE HELPERS ---
+        function safeGet(key, fallback) {
+            try { return JSON.parse(localStorage.getItem(key) || 'null') ?? fallback; }
+            catch { return fallback; }
+        }
+        function safeSet(key, value) {
+            try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+            catch { showMessage('Storage is full. Please delete older workouts.'); return false; }
+        }
 
         // --- WORKOUT TRACKER CORE LOGIC ---
-
         const workoutData = {
             day1: { name: "Day 1: Quad Focus (Mon)", exercises: [
                 { name: "Leg Extension", sets: 1, reps: "Failure", type: 'isolation' }, 
@@ -1090,7 +1072,7 @@
             currentExIndex = 0;
             totalPlannedSets = activeWorkoutPlan.exercises.reduce((sum, ex) => sum + (parseInt(ex.sets) || 0), 0);
             
-            // CRITICAL: Pre-initialize session data
+            // Pre-initialize session data
             currentSessionData = {};
             activeWorkoutPlan.exercises.forEach((exercise, index) => {
                 currentSessionData[index] = {
@@ -1132,8 +1114,7 @@
                     </div>
                     <p class="text-sm text-gray-500 mb-4">Target: ${exercise.sets} sets × ${exercise.reps}</p>
                     
-                    <!-- FIX: Set initial display: none via style -->
-                    <div class="swap-ui p-3 bg-pink-100 border border-pink-300 rounded-xl mb-3" id="swap-ui-${index}" style="display: none;"> 
+                    <div class="swap-ui p-3 bg-pink-100 border border-pink-300 rounded-xl mb-3" id="swap-ui-${index}" style="display:none">
                         <label for="swap-input-${index}" class="block text-xs font-semibold mb-1 text-pink-600">Substitute Name:</label>
                         <input type="text" id="swap-input-${index}" placeholder="Enter new exercise name" value="${exName}" class="w-full p-2 border border-pink-400 rounded-lg text-gray-800" />
                         <button class="btn btn-secondary text-xs mt-2 p-2" onclick="applySwap(${index}, '${exercise.name}')" style="border-radius: 12px;">Apply Substitute</button>
@@ -1150,7 +1131,7 @@
 
                 html += `
                     <div class="set-input-group flex items-center bg-gray-50 p-3 rounded-xl">
-                        <label class="text-xs uppercase font-semibold text-gray-600 min-w-[30px]">Set ${i}</label>
+                        <label for="ex${index}_set${i}_weight" class="text-xs uppercase font-semibold text-gray-600 min-w-[50px]">Set ${i}</label>
                         <input 
                             type="number" 
                             placeholder="Weight (lbs)" 
@@ -1160,6 +1141,7 @@
                             min="0" step="0.1" value="${weightValue}"
                         />
                         <span class="mx-2 text-gray-500">x</span>
+                        <label for="ex${index}_set${i}_reps" class="sr-only">Reps</label>
                         <input 
                             type="number" 
                             placeholder="Reps" 
@@ -1176,7 +1158,7 @@
                     </div>
                     
                     <h5 class="text-sm font-semibold text-gray-600 mt-4 mb-2">Quick Notes:</h5>
-                    <textarea id="ex${index}_notes" oninput="saveNotes(${index})" placeholder="e.g., Felt heavy today, tempo was hard. (Optional)" rows="2" class="w-full p-2 bg-gray-50 border border-gray-300 rounded-xl text-gray-800">${notes}</textarea>
+                    <textarea id="ex${index}_notes" oninput="saveNotes(${index})" placeholder="e.g., Felt heavy today, tempo was hard." rows="2" class="w-full p-2 bg-gray-50 border border-gray-300 rounded-xl text-gray-800">${notes}</textarea>
 
                 </div>
                 <div class="flex justify-between mt-4">
@@ -1263,7 +1245,7 @@
                 return;
             }
 
-            const saveBtn = document.querySelector('.btn');
+            const saveBtn = document.getElementById('save-workout-btn');
             if (saveBtn) { saveBtn.focus(); }
         }
 
@@ -1304,15 +1286,11 @@
 
         function showSwapModal(exIndex, originalName) {
             saveVisibleSessionData();
-
             const swapUI = document.getElementById(`swap-ui-${exIndex}`);
             const swapInput = document.getElementById(`swap-input-${exIndex}`);
-            const exNameEl = document.getElementById(`ex-name-${exIndex}`);
             const swapBtn = document.getElementById(`swap-btn-${exIndex}`);
             
-            // Clean up type label if present
-            const currentDisplayName = exNameEl.textContent.replace(/(COMPOUND|ISOLATION)$/, '').trim();
-            swapInput.value = currentDisplayName; 
+            swapInput.value = currentSessionData[exIndex].name;
             swapUI.style.display = 'block';
             swapInput.focus();
             
@@ -1326,7 +1304,6 @@
         function hideSwapModal(exIndex, originalName) {
             const swapUI = document.getElementById(`swap-ui-${exIndex}`);
             const swapBtn = document.getElementById(`swap-btn-${exIndex}`);
-            
             swapUI.style.display = 'none';
             
             swapBtn.textContent = currentSessionData[exIndex].name === originalName ? 'Swap 🔄' : 'Unswap 🔄';
@@ -1339,30 +1316,16 @@
         function applySwap(exIndex, originalName) {
             const swapInput = document.getElementById(`swap-input-${exIndex}`);
             const newName = swapInput.value.trim();
-            const exNameEl = document.getElementById(`ex-name-${exIndex}`);
             const exercisePlan = activeWorkoutPlan.exercises[exIndex];
             
-            const typeLabel = exercisePlan.type ? 
-                `<span class="text-xs font-semibold px-2 py-1 rounded-full ml-2" style="background-color: ${exercisePlan.type === 'compound' ? 'rgba(233, 30, 99, 0.1)' : 'rgba(0, 188, 212, 0.1)'}; color: ${exercisePlan.type === 'compound' ? 'var(--color-compound)' : 'var(--color-isolation)'};">${exercisePlan.type.toUpperCase()}</span>` 
-                : '';
-
             if (newName && newName.toLowerCase() !== originalName.toLowerCase()) {
-                exNameEl.innerHTML = newName + typeLabel;
-                
-                const sessionEntry = currentSessionData[exIndex];
-                if (sessionEntry) sessionEntry.name = newName;
-
+                currentSessionData[exIndex].name = newName;
                 showMessage(`✅ Exercise substituted: ${originalName} → ${newName}`);
             } else {
-                exNameEl.innerHTML = originalName + typeLabel; 
-                
-                const sessionEntry = currentSessionData[exIndex];
-                if (sessionEntry) sessionEntry.name = originalName;
-
+                currentSessionData[exIndex].name = originalName;
                 showMessage(`Exercise name reset to: ${originalName}`);
             }
-            
-            hideSwapModal(exIndex, originalName);
+            renderCurrentExercise();
         }
         
         function calculateSetTonnage(weight, reps) {
@@ -1409,10 +1372,10 @@
             if (totalWorkoutSetCount === 0) { showMessage('Please enter at least one valid set before saving!'); return; }
             
             workoutLog.totalVolume = totalWorkoutSetCount;
-            let workouts = JSON.parse(localStorage.getItem('workoutHistory') || '[]');
+            let workouts = safeGet('workoutHistory', []);
             workouts.unshift(workoutLog);
             if (workouts.length > 100) { workouts = workouts.slice(0, 100); }
-            localStorage.setItem('workoutHistory', JSON.stringify(workouts));
+            if (!safeSet('workoutHistory', workouts)) return;
             
             showMessage(`✅ Workout saved! Total Sets: ${totalWorkoutSetCount}`);
             loadHistory();
@@ -1422,10 +1385,9 @@
         }
 
         function loadWorkout() {
-            const phase = document.getElementById('phase-select').value;
             const day = document.getElementById('day-select').value;
-            const workouts = JSON.parse(localStorage.getItem('workoutHistory') || '[]');
-            const lastWorkout = workouts.find(w => w.phase === phase && w.day === day);
+            const workouts = safeGet('workoutHistory', []);
+            const lastWorkout = workouts.find(w => w.day === day);
             if (!lastWorkout) { showMessage('No previous workout found for this day!'); return; }
             
             currentSessionData = {};
@@ -1456,7 +1418,7 @@
 
         function loadHistory() {
             const historyList = document.getElementById('history-list');
-            const workouts = JSON.parse(localStorage.getItem('workoutHistory') || '[]');
+            const workouts = safeGet('workoutHistory', []);
             if (workouts.length === 0) { historyList.innerHTML = '<p class="text-sm text-gray-400">No workouts logged yet. Start tracking your progress!</p>'; return; }
 
             let html = '';
@@ -1481,9 +1443,9 @@
         function deleteWorkout(index) {
             showMessage('Are you sure you want to delete this workout entry? This cannot be undone.', (confirmed) => {
                 if (confirmed) {
-                    let workouts = JSON.parse(localStorage.getItem('workoutHistory') || '[]');
+                    let workouts = safeGet('workoutHistory', []);
                     workouts.splice(index, 1);
-                    localStorage.setItem('workoutHistory', JSON.stringify(workouts));
+                    if (!safeSet('workoutHistory', workouts)) return;
                     loadHistory();
                     updatePRs();
                     renderCharts();
@@ -1492,12 +1454,11 @@
             });
         }
         
-        // --- ANALYTICS / PR / CHARTING LOGIC ---
-        
+        // --- ANALYTICS / PR / CHARTING ---
         let prCache = {};
 
         function updatePRs() {
-            const workouts = JSON.parse(localStorage.getItem('workoutHistory') || '[]');
+            const workouts = safeGet('workoutHistory', []);
             const prs = {};
             workouts.forEach(workout => {
                 workout.exercises.forEach(exercise => {
@@ -1511,7 +1472,7 @@
                 });
             });
             prCache = prs;
-            localStorage.setItem('personalRecords', JSON.stringify(prs));
+            safeSet('personalRecords', prs);
             renderPRs();
         }
         
@@ -1536,8 +1497,27 @@
             prList.innerHTML = html;
         }
 
+        // CSS var helpers for Chart.js
+        const css = getComputedStyle(document.documentElement);
+        const c = v => css.getPropertyValue(v).trim();
+        function hexToRgba(hex, alpha) {
+            const h = hex.replace('#','');
+            if (h.length !== 6) return hex;
+            const r = parseInt(h.slice(0,2),16);
+            const g = parseInt(h.slice(2,4),16);
+            const b = parseInt(h.slice(4,6),16);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
         function renderCharts() {
-            const workouts = JSON.parse(localStorage.getItem('workoutHistory') || '[]');
+            const workouts = safeGet('workoutHistory', []);
+            const progress = c('--color-progress') || '#4CAF50';
+            const deepPink = c('--color-deep-pink') || '#E91E63';
+            const isolation = c('--color-isolation') || '#00BCD4';
+            const danger = c('--color-danger') || '#FF6B6B';
+            const gridColor = 'rgba(0,0,0,0.1)';
+            const tickColor = c('--color-tracker-muted') || '#777';
+
             if (workouts.length === 0) { 
                 document.getElementById('exercise-charts-container').innerHTML = 
                     '<p class="md:col-span-2 text-center text-gray-400">Log more workouts to see specific exercise charts.</p>'; 
@@ -1559,17 +1539,17 @@
                     datasets: [{
                         label: 'Total Workout Sets',
                         data: data,
-                        borderColor: 'var(--color-progress)',
-                        backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                        borderColor: progress,
+                        backgroundColor: hexToRgba(progress.startsWith('#') ? progress : '#4CAF50', 0.2),
                         fill: true, tension: 0.3
                     }]
                 },
                 options: {
                     responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { display: false }, title: { display: true, text: 'Total Set Count Trend', color: 'var(--color-text-dark)' } },
+                    plugins: { legend: { display: false }, title: { display: true, text: 'Total Set Count Trend', color: c('--color-text-dark') || '#333' } },
                     scales: {
-                        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.1)' }, ticks: { color: 'var(--color-tracker-muted)', precision: 0 } },
-                        x: { grid: { display: false }, ticks: { color: 'var(--color-tracker-muted)' } }
+                        y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: tickColor, precision: 0 } },
+                        x: { grid: { display: false }, ticks: { color: tickColor } }
                     }
                 }
             });
@@ -1584,7 +1564,7 @@
             exerciseChartInstances.forEach(chart => chart.destroy());
             exerciseChartInstances = [];
             
-            const colors = ['var(--color-deep-pink)', 'var(--color-isolation)', 'var(--color-progress)', 'var(--color-danger)'];
+            const colorPool = [deepPink, isolation, progress, danger];
 
             topExercises.forEach((exName, index) => {
                 const exHistory = sortedWorkouts.map(w => {
@@ -1598,19 +1578,22 @@
                 
                 if (exHistory.length < 2) return;
 
+                const color = colorPool[index % colorPool.length] || deepPink;
+
                 const chartData = {
                     labels: exHistory.map(h => new Date(h.date).toLocaleDateString()),
                     datasets: [{
                         label: 'Best Set Effective Strength',
-                        data: exHistory.map(h => h.tonnage.toFixed(0)),
-                        borderColor: colors[index % colors.length],
-                        backgroundColor: colors[index % colors.length].replace(')', ', 0.3)').replace('rgb', 'rgba'),
-                        fill: false, tension: 0.1, pointRadius: 5, pointBackgroundColor: colors[index % colors.length]
+                        data: exHistory.map(h => Number(h.tonnage.toFixed(0))),
+                        borderColor: color,
+                        backgroundColor: hexToRgba(color.startsWith('#') ? color : '#E91E63', 0.25),
+                        fill: false, tension: 0.1, pointRadius: 5, pointBackgroundColor: color
                     }]
                 };
 
                 const chartDiv = document.createElement('div');
                 chartDiv.className = 'chart-container';
+                chartDiv.style.height = '260px';
                 chartDiv.innerHTML = `<canvas id="chart-${index}"></canvas>`;
                 container.appendChild(chartDiv);
 
@@ -1619,10 +1602,10 @@
                     type: 'line', data: chartData,
                     options: {
                         responsive: true, maintainAspectRatio: false,
-                        plugins: { legend: { display: false }, title: { display: true, text: `${exName} - Best Set Effective Strength Trend`, color: 'var(--color-text-dark)' } },
+                        plugins: { legend: { display: false }, title: { display: true, text: `${exName} - Best Set Effective Strength Trend`, color: c('--color-text-dark') || '#333' } },
                         scales: {
-                            y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.1)' }, ticks: { color: 'var(--color-tracker-muted)' } },
-                            x: { grid: { display: false }, ticks: { color: 'var(--color-tracker-muted)' } }
+                            y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: tickColor } },
+                            x: { grid: { display: false }, ticks: { color: tickColor } }
                         }
                     }
                 });
