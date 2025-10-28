@@ -356,6 +356,10 @@
              border-radius: 12px;
              border: 1px solid #eee;
         }
+        .set-input-group label {
+            /* Fix: Reduced min-width to prevent mobile overflow */
+            min-width: 30px; 
+        }
         .set-input-group input {
             background-color: white;
             color: var(--color-text-dark);
@@ -1128,7 +1132,8 @@
                     </div>
                     <p class="text-sm text-gray-500 mb-4">Target: ${exercise.sets} sets × ${exercise.reps}</p>
                     
-                    <div class="swap-ui p-3 bg-pink-100 border border-pink-300 rounded-xl mb-3" id="swap-ui-${index}" style="display: none;">
+                    <!-- FIX: Set initial display: none via style -->
+                    <div class="swap-ui p-3 bg-pink-100 border border-pink-300 rounded-xl mb-3" id="swap-ui-${index}" style="display: none;"> 
                         <label for="swap-input-${index}" class="block text-xs font-semibold mb-1 text-pink-600">Substitute Name:</label>
                         <input type="text" id="swap-input-${index}" placeholder="Enter new exercise name" value="${exName}" class="w-full p-2 border border-pink-400 rounded-lg text-gray-800" />
                         <button class="btn btn-secondary text-xs mt-2 p-2" onclick="applySwap(${index}, '${exercise.name}')" style="border-radius: 12px;">Apply Substitute</button>
@@ -1145,7 +1150,7 @@
 
                 html += `
                     <div class="set-input-group flex items-center bg-gray-50 p-3 rounded-xl">
-                        <label class="text-xs uppercase font-semibold text-gray-600 min-w-[50px]">Set ${i}</label>
+                        <label class="text-xs uppercase font-semibold text-gray-600 min-w-[30px]">Set ${i}</label>
                         <input 
                             type="number" 
                             placeholder="Weight (lbs)" 
@@ -1171,7 +1176,7 @@
                     </div>
                     
                     <h5 class="text-sm font-semibold text-gray-600 mt-4 mb-2">Quick Notes:</h5>
-                    <textarea id="ex${index}_notes" oninput="saveNotes(${index})" placeholder="e.g., Felt heavy today, tempo was hard." rows="2" class="w-full p-2 bg-gray-50 border border-gray-300 rounded-xl text-gray-800">${notes}</textarea>
+                    <textarea id="ex${index}_notes" oninput="saveNotes(${index})" placeholder="e.g., Felt heavy today, tempo was hard. (Optional)" rows="2" class="w-full p-2 bg-gray-50 border border-gray-300 rounded-xl text-gray-800">${notes}</textarea>
 
                 </div>
                 <div class="flex justify-between mt-4">
@@ -1299,12 +1304,15 @@
 
         function showSwapModal(exIndex, originalName) {
             saveVisibleSessionData();
+
             const swapUI = document.getElementById(`swap-ui-${exIndex}`);
             const swapInput = document.getElementById(`swap-input-${exIndex}`);
             const exNameEl = document.getElementById(`ex-name-${exIndex}`);
             const swapBtn = document.getElementById(`swap-btn-${exIndex}`);
             
-            swapInput.value = currentSessionData[exIndex].name;
+            // Clean up type label if present
+            const currentDisplayName = exNameEl.textContent.replace(/(COMPOUND|ISOLATION)$/, '').trim();
+            swapInput.value = currentDisplayName; 
             swapUI.style.display = 'block';
             swapInput.focus();
             
@@ -1318,6 +1326,7 @@
         function hideSwapModal(exIndex, originalName) {
             const swapUI = document.getElementById(`swap-ui-${exIndex}`);
             const swapBtn = document.getElementById(`swap-btn-${exIndex}`);
+            
             swapUI.style.display = 'none';
             
             swapBtn.textContent = currentSessionData[exIndex].name === originalName ? 'Swap 🔄' : 'Unswap 🔄';
@@ -1330,6 +1339,7 @@
         function applySwap(exIndex, originalName) {
             const swapInput = document.getElementById(`swap-input-${exIndex}`);
             const newName = swapInput.value.trim();
+            const exNameEl = document.getElementById(`ex-name-${exIndex}`);
             const exercisePlan = activeWorkoutPlan.exercises[exIndex];
             
             const typeLabel = exercisePlan.type ? 
@@ -1337,13 +1347,22 @@
                 : '';
 
             if (newName && newName.toLowerCase() !== originalName.toLowerCase()) {
-                currentSessionData[exIndex].name = newName;
+                exNameEl.innerHTML = newName + typeLabel;
+                
+                const sessionEntry = currentSessionData[exIndex];
+                if (sessionEntry) sessionEntry.name = newName;
+
                 showMessage(`✅ Exercise substituted: ${originalName} → ${newName}`);
             } else {
-                currentSessionData[exIndex].name = originalName;
+                exNameEl.innerHTML = originalName + typeLabel; 
+                
+                const sessionEntry = currentSessionData[exIndex];
+                if (sessionEntry) sessionEntry.name = originalName;
+
                 showMessage(`Exercise name reset to: ${originalName}`);
             }
-            renderCurrentExercise();
+            
+            hideSwapModal(exIndex, originalName);
         }
         
         function calculateSetTonnage(weight, reps) {
@@ -1403,9 +1422,10 @@
         }
 
         function loadWorkout() {
+            const phase = document.getElementById('phase-select').value;
             const day = document.getElementById('day-select').value;
             const workouts = JSON.parse(localStorage.getItem('workoutHistory') || '[]');
-            const lastWorkout = workouts.find(w => w.day === day);
+            const lastWorkout = workouts.find(w => w.phase === phase && w.day === day);
             if (!lastWorkout) { showMessage('No previous workout found for this day!'); return; }
             
             currentSessionData = {};
@@ -1473,6 +1493,7 @@
         }
         
         // --- ANALYTICS / PR / CHARTING LOGIC ---
+        
         let prCache = {};
 
         function updatePRs() {
