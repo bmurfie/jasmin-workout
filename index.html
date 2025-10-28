@@ -530,6 +530,54 @@
         padding: 12px 20px !important;
         font-size: 0.9rem !important;
       }
+      /* --- Mobile stability kit --- */
+
+      /* Avoid accidental horizontal scroll on narrow phones */
+      html, body { overflow-x: hidden; }
+
+      /* Respect iOS notches & pinned bars */
+      body { padding-top: env(safe-area-inset-top, 70px); }
+
+      /* Ensure sticky header never overlaps content on anchor jumps */
+      section { scroll-margin-top: 76px; }
+
+      /* Larger mobile tap targets */
+      .nav-link { min-height: 44px; line-height: 44px; padding: 0 12px; }
+
+      /* Tame mobile text zoom on inputs (iOS zooms <16px fields) */
+      input, select, textarea, button { font-size: 16px; }
+
+      /* Better numeric keyboards where it makes sense */
+      input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+      /* Reduce tap highlight & lag feel */
+      * { -webkit-tap-highlight-color: transparent; }
+      .main-container, .exercise-entry, .btn { touch-action: manipulation; }
+
+      /* Respect users who prefer reduced motion (battery/vestibular) */
+      @media (prefers-reduced-motion: reduce) {
+        .timer-display.running, .timer-display.finished { animation: none !important; }
+      html { scroll-behavior: auto; }
+}
+
+/* Make charts predictable heights on small screens -> fewer reflows */
+.chart-container { min-height: 260px; }
+
+/* Avoid 100vh issues when mobile bars show/hide; use dvh when supported */
+.fullscreen-mode .main-container { min-height: 100dvh; }
+
+/* Keep sticky header robust and high enough */
+.sticky-nav { z-index: 1000; }
+
+/* Nav wraps cleanly on tiny phones */
+@media (max-width: 480px) {
+  .sticky-nav .max-w-screen-xl { gap: 6px; padding: 6px 8px; }
+  .nav-link { flex: 1 0 28%; font-size: 0.85rem; }
+  h1 { font-size: 1.9rem; }
+  .section-title { font-size: 1.5rem; }
+      }
     }
   </style>
 </head>
@@ -2333,4 +2381,5 @@
   </footer>
 </body>
 </html>
+
 
