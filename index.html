@@ -902,7 +902,7 @@
         let timerSeconds = 0;
         let totalSeconds = 0;
         let isPaused = false;
-        const timerAudio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDGH0fPTgjMGHm7A7+OZRQ0PVa3n8KC9fGgxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZ');
+        const timerAudio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDGH0fPTgjMGHm7A7+OZRQ0PVa3n8KC9fGgxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZRQ0OVK3n8K1dGQxKpuPyvmoeAzCC0fPTgjQGIXLC7+OZ');
 
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
@@ -1128,7 +1128,7 @@
                     </div>
                     <p class="text-sm text-gray-500 mb-4">Target: ${exercise.sets} sets × ${exercise.reps}</p>
                     
-                    <div class="swap-ui p-3 bg-pink-100 border border-pink-300 rounded-xl mb-3" id="swap-ui-${index}">
+                    <div class="swap-ui p-3 bg-pink-100 border border-pink-300 rounded-xl mb-3" id="swap-ui-${index}" style="display: none;">
                         <label for="swap-input-${index}" class="block text-xs font-semibold mb-1 text-pink-600">Substitute Name:</label>
                         <input type="text" id="swap-input-${index}" placeholder="Enter new exercise name" value="${exName}" class="w-full p-2 border border-pink-400 rounded-lg text-gray-800" />
                         <button class="btn btn-secondary text-xs mt-2 p-2" onclick="applySwap(${index}, '${exercise.name}')" style="border-radius: 12px;">Apply Substitute</button>
